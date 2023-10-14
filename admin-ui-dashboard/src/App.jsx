@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Topbar from "./scenes/global/Topbar";
+import Sidebar from "./scenes/global/Sidebar";
 
 function App() {
   const [theme, colorMode] = useMode();
