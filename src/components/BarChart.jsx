@@ -6,10 +6,19 @@ import { mockBarData as data } from "../data/mockData";
 const BarChart = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  // const colorByIndex = ({ id }) => {
+  //   if (id === 'donut') {
+  //     return 'red'; // return red for donut
+  //   } else {
+  //     return colors[id]; // return other colors for other keys
+  //   }
+  // };
   
   return (
     <ResponsiveBar
       data={data}
+      // colors={colorByIndex}
       theme={{
         // added
         axis: {
@@ -39,7 +48,7 @@ const BarChart = ({ isDashboard = false }) => {
           },
         },
       }}
-      keys={["hot dog", "burger", "sandwich", "kebab", "fries", "donut"]}
+      keys={["Yearly",]}
       indexBy="country"
       margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
       padding={0.3}

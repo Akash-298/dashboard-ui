@@ -6,6 +6,7 @@ import { ColorModeContext, useMode } from "./theme";
 import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
 import Bar from "./scenes/Bar";
+import Dashboard from "./scenes/dashboard";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <main className="content">
               <Topbar></Topbar>
               <Routes>
+              <Route path="/" element={<Dashboard />} />
                 <Route path="/bar" element={Bar}></Route>
               </Routes>
             </main>
