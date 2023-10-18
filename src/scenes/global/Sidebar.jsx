@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
-
-import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
-import { Box, IconButton, Typography, useTheme } from "@mui/material";
+import { ProSidebar, Menu, MenuItem } from 'react-pro-sidebar';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { Box, IconButton, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import MediationIcon from "@mui/icons-material/Mediation";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
@@ -16,6 +17,7 @@ import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+ 
   return (
     <MenuItem
       active={selected === title}
@@ -24,10 +26,6 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
       }}
       onClick={() => setSelected(title)}
       icon={icon}
-
-
-
-      
     >
       <Typography>{title}</Typography>
       <Link to={to} />
@@ -38,7 +36,14 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 const Sidebar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [isCollapsed, setIsCollapsed] = useState(false);
+ const isMobile =  useMediaQuery(theme.breakpoints.down('md'));
+
+  const [isCollapsed, setIsCollapsed] = useState(isMobile);
+
+  useEffect(() => {
+    setIsCollapsed(isMobile);
+  }, [isMobile]);
+
   const [selected, setSelected] = useState("Dashboard");
 
   return (
@@ -60,6 +65,7 @@ const Sidebar = () => {
           color: "#6870fa !important",
         },
       }}
+     
     >
       <ProSidebar collapsed={isCollapsed}>
         <Menu iconShape="square">
@@ -71,6 +77,7 @@ const Sidebar = () => {
               margin: "10px 0 20px 0",
               color: colors.grey[100],
             }}
+
           >
             {!isCollapsed && (
               <Box
@@ -152,17 +159,17 @@ const Sidebar = () => {
 
             {/* {user profile} */}
             {!isCollapsed && (
-              <Box mb="25px" display="flex">
-                <Box display="flex" justifyContent="center" alignItems="center">
+              <Box m="20px" mb="25px" display="flex" justifyContent="center">
+                <Box display="flex" alignItems="center">
                   <img
                     alt="profile-user"
-                    width="100px"
-                    height="100px"
-                    src={`../../assets/user.png`}
+                    width="70px"
+                    height="70px"
+                    src="https://img.freepik.com/free-photo/handsome-man-white-shirt-posing-attractive-guy-with-fashion-hairstyle-confident-man-with-short-beard-adult-boy-with-brown-hair-closeup-portrait_186202-8538.jpg"
                     style={{ cursor: "pointer", borderRadius: "50%" }}
                   />
                 </Box>
-                <Box textAlign="center">
+                <Box textAlign="center" paddingBottom="13px">
                   <Typography
                     variant="h2"
                     color={colors.grey[100]}

@@ -7,6 +7,8 @@ import Topbar from "./scenes/global/Topbar";
 import Sidebar from "./scenes/global/Sidebar";
 import Bar from "./scenes/Bar";
 import Dashboard from "./scenes/dashboard";
+import Pie from "./scenes/Pie";
+
 
 
 function App() {
@@ -24,7 +26,8 @@ function App() {
               <Topbar></Topbar>
               <Routes>
               <Route path="/" element={<Dashboard />} />
-                <Route path="/bar" element={Bar}></Route>
+                <Route path="/product" element={<Bar/>}></Route>
+                <Route path="/customers" element={<Pie/>}></Route>
               </Routes>
             </main>
           </div>

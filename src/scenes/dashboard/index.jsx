@@ -3,7 +3,9 @@ import {
   Button,
   ButtonGroup,
   IconButton,
+  TextField,
   Typography,
+  useMediaQuery,
   useTheme,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
@@ -21,32 +23,34 @@ import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import RequestPageIcon from "@mui/icons-material/RequestPage";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { Search, ShoppingBag } from "@mui/icons-material";
+// import { useMediaQuery } from '@mui/material';
 import StatBox from "../../components/Statbox";
 import SmallBlock from "../../components/SmallBlock";
 const Dashboard = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   return (
     <Box m="20px">
       {/* HEADER */}
 
       {/* GRID & CHARTS */}
       <Box
-        display="grid"
-        gridTemplateColumns="repeat(12, 1fr)"
-        gridAutoRows="140px"
-        gap="20px"
+         display="grid"
+         gridTemplateColumns= 'repeat(12, 1fr)'
+         gridAutoRows="140px"
+         gap="20px"
       >
         {/* ROW 1 */}
         <Box
-          gridColumn="span 3"
+          gridColumn= 'span 3'
           backgroundColor={colors.primary[400]}
           display="flex"
           alignItems="center"
           justifyContent="center"
         >
           <SmallBlock
+
             title="Earnings"
             subtitle="$277k"
             increase="+14% this month"
@@ -58,8 +62,8 @@ const Dashboard = () => {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  width: "80px",
-                  height: "80px",
+                  width: "60px",
+                  height: "60px",
                 }}
               >
                 <AttachMoneyIcon
@@ -70,7 +74,7 @@ const Dashboard = () => {
           />
         </Box>
         <Box
-          gridColumn="span 3"
+          gridColumn='span 3'
           backgroundColor={colors.primary[400]}
           display="flex"
           alignItems="center"
@@ -88,8 +92,8 @@ const Dashboard = () => {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  width: "80px",
-                  height: "80px",
+                  width: "60px",
+                  height: "60px",
                 }}
               >
                 <RequestPageIcon
@@ -100,7 +104,7 @@ const Dashboard = () => {
           />
         </Box>
         <Box
-          gridColumn="span 3"
+          gridColumn='span 3'
           backgroundColor={colors.primary[400]}
           display="flex"
           alignItems="center"
@@ -118,8 +122,8 @@ const Dashboard = () => {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  width: "80px",
-                  height: "80px",
+                  width: "60px",
+                  height: "60px",
                 }}
               >
                 <AccountBalanceWalletIcon
@@ -130,7 +134,7 @@ const Dashboard = () => {
           />
         </Box>
         <Box
-          gridColumn="span 3"
+          gridColumn='span 3'
           backgroundColor={colors.primary[400]}
           display="flex"
           alignItems="center"
@@ -148,8 +152,8 @@ const Dashboard = () => {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  width: "80px",
-                  height: "80px",
+                  width: "60px",
+                  height: "60px",
                 }}
               >
                 <ShoppingBag
@@ -163,8 +167,8 @@ const Dashboard = () => {
         {/* ROW 2 */}
 
         <Box
-          gridColumn="span 6"
-          gridRow="span 2"
+          gridColumn='span 6'
+          gridRow='span 2'
           backgroundColor={colors.primary[400]}
         >
           <Box
@@ -188,6 +192,7 @@ const Dashboard = () => {
             </Box>
             <Box>
               {/* <Button variant="contained">Yearly ↓</Button> */}
+              
               <ButtonGroup variant="contained" aria-label="split button">
                 <Button>Yearly</Button>
                 <Button
@@ -207,8 +212,8 @@ const Dashboard = () => {
           </Box>
         </Box>
         <Box
-          gridColumn="span 6"
-          gridRow="span 2"
+          gridColumn='span 4'
+          gridRow='span 2'
           backgroundColor={colors.primary[400]}
           p="30px"
         >
@@ -236,26 +241,34 @@ const Dashboard = () => {
 
         <Box
           gridColumn="span 12"
-          gridRow="span 2"
+          gridRow="span 4"
           backgroundColor={colors.primary[400]}
           overflow="auto"
         >
           <Box
             display="flex"
-            justifyContent="space-between"
+            // border="solid red"
+          
             alignItems="center"
             borderBottom={`4px solid ${colors.primary[500]}`}
             colors={colors.grey[100]}
             p="15px"
           >
-            <Box display="flex" justifyContent="space-between">
-              <Box>
-                <Typography color={colors.grey[100]} variant="h3">
+            <Box display="flex"  width="100%" justifyContent="space-between"
+                //  border="solid blue"
+                >
+              <Box >
+                <Typography color={colors.grey[100]} variant="h3"
+                //  border="solid pink"
+                >
                   Product Sales
                 </Typography>
-
-                <Box>
-                  <Box>
+                </Box>
+                <Box >
+                  <Box justifyContent="center"
+                  textAlign="center">
+                     {/* {Search field} */}
+                    
                     <ButtonGroup variant="contained" aria-label="split button">
                       <Button>Last 2 day</Button>
                       <Button
@@ -268,16 +281,12 @@ const Dashboard = () => {
                         <ArrowDropDownIcon />
                       </Button>
                     </ButtonGroup>
-                    {/* {Search field} */}
-                    <Search>
-                      <SearchIcon
-                        placeholder="Search…"
-                        inputProps={{ "aria-label": "search" }}
-                      />
-                    </Search>
+                   
+                    
                   </Box>
                 </Box>
-              </Box>
+          
+
             </Box>
           </Box>
           {mockTransactions.map((transaction, i) => (
